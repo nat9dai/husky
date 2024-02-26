@@ -35,10 +35,9 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <arg name="yaw" default="0.0"/>
 
   <!-- Optionally disable teleop control -->
-  <arg name="joystick" default="true" />
+  <arg name="joystick" default="false" />
 
   <group ns="$(arg robot_namespace)">
-
     <!-- <group if="$(arg multimaster)">
       <include file="$(find husky_description)/launch/description.launch" >
         <arg name="robot_namespace" value="$(arg robot_namespace)"/>
@@ -56,18 +55,19 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <!-- For single master bringup, run robot control on the gazebo master -->
     <!-- Note that husky_description/description.launch is already included in husky_control/control.launch. -->
     <!-- <group unless="$(arg multimaster)"> -->
-      <include file="$(find husky_control)/launch/control.launch">
+    <include file="$(find husky_control)/launch/control.launch">
+      <arg name="robot_namespace" value="$(arg robot_namespace)"/>
         <!-- <arg name="multimaster" value="$(arg multimaster)"/> -->
-      </include>
-      <include file="$(find husky_control)/launch/teleop.launch">
+    </include>
+      <!--include file="$(find husky_control)/launch/teleop.launch">
         <arg name="joystick" value="$(arg joystick)" />
-      </include>
+      </include-->
     <!-- </group> -->
 
     <!-- Additional nodes for specific accessories -->
-    <group if="$(optenv HUSKY_REALSENSE_ENABLED 0)">
+    <!--group if="$(optenv HUSKY_REALSENSE_ENABLED 0)">
       <include file="$(find husky_gazebo)/launch/realsense.launch" />
-    </group>
+    </group-->
 
     <!-- Spawn robot in gazebo -->
     <node name="spawn_husky_model" pkg="gazebo_ros" type="spawn_model"
@@ -78,7 +78,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
               -unpause
               -urdf
               -param robot_description
-              -model husky
+              -model $(arg robot_namespace)
               -robot_namespace $(arg robot_namespace)" />
 
   </group>
