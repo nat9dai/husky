@@ -30,7 +30,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <include file="$(find husky_gazebo)/launch/playpen.launch" />
 
   <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
-    <arg name="robot_namespace" value="husky_0"/> <!-- IDK we need to have a "/" namespace -->
+    <arg name="robot_namespace" value="husky_0"/>
     <!--arg name="multimaster" value="true"/-->
   </include>
 
