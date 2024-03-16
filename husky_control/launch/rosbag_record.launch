@@ -1,0 +1,18 @@
+<launch>
+    <!-- ROS bag record node -->
+    <node name="rosbag_record" pkg="rosbag" type="record" output="screen" args="-O
+    test_2_mpc.bag
+    /gazebo/model_states
+    /husky_0/cmd_vel
+    /husky_0/hierarchy
+    /husky_0/traj
+    /husky_1/cmd_vel
+    /husky_1/hierarchy
+    /husky_1/traj
+    /husky_2/cmd_vel
+    /husky_2/hierarchy
+    /husky_2/traj
+    /open_nmpc_controller_1/result
+    /open_nmpc_controller_2/result"
+    />
+</launch>

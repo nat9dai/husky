@@ -12,6 +12,9 @@
   <!-- Leader -->
   <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
     <arg name="robot_namespace" value="husky_0"/>
+    <arg name="x" value="-5.857378868712235"/>
+    <arg name="y" value="-5.131734155596889"/>
+    <arg name="yaw" value="0.0"/>
   </include>
   <node pkg="husky_control"
         name="cmd_vel_keyboard"
@@ -30,9 +33,9 @@
 
   <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
     <arg name="robot_namespace" value="husky_1"/>
-    <arg name="x" value="1.0"/>
-    <arg name="y" value="3.0"/>
-    <arg name="yaw" value="30.0"/>
+    <arg name="x" value="-6.853181263534891"/>
+    <arg name="y" value="-6.253329500533115"/>
+    <arg name="yaw" value="1.5"/>
   </include>
   <node name="open_nmpc_controller_1"
         pkg="open_nmpc_controller"
@@ -49,9 +52,9 @@
 
   <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
     <arg name="robot_namespace" value="husky_2"/>
-    <arg name="x" value="-3.0"/>
-    <arg name="y" value="-1.0"/>
-    <arg name="yaw" value="45.0"/>
+    <arg name="x" value="-7.872674591300566"/>
+    <arg name="y" value="-7.352182434220175"/>
+    <arg name="yaw" value="0.0"/>
   </include>
   <node name="open_nmpc_controller_2"
         pkg="open_nmpc_controller"
@@ -59,7 +62,7 @@
         respawn="true"
         clear_params="true"
         output="screen"
-        args="2"> <!-- husky_2-->
+        args="2">
     <rosparam file="$(find open_nmpc_controller)/config/open_params.yaml" />
   </node>
   <include file="$(find husky_gazebo)/launch/box_filter.launch">
